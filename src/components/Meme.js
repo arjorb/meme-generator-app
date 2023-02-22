@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Meme = () => {
+  const [meme, setMeme] = useState();
   return (
     <>
       <div className='my-10'>
