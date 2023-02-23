@@ -22,6 +22,14 @@ const Meme = () => {
     }));
   };
 
+  const handleChange = e => {
+    const [name, value] = e.target;
+    setMeme(prevMeme => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  };
+
   return (
     <>
       <div className='my-10'>
@@ -31,11 +39,17 @@ const Meme = () => {
               type='text'
               placeholder='Top text'
               className='py-1 pl-1 text-lg outline-none rounded-md border-2 border-gray-200 w-full'
+              name='topText'
+              value={meme.topText}
+              onChange={handleChange}
             />
             <input
               type='text'
               placeholder='Bottom text'
               className='py-1 pl-1 text-lg outline-none rounded-md border-2 border-gray-200 w-full'
+              name='buttomText'
+              value={meme.topText}
+              onChange={handleChange}
             />
           </div>
           <button
