@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Meme = () => {
-  const [meme, setMeme] = useState();
+  const [meme, setMeme] = useState({ topText: '', buttomText: '', randomImage: 'http://i.imgflip.com/1bij.jpg' });
+  const [allMemeImage, setAllMemeImage] = useState([]);
+
+  useEffect(() => {
+    const getMeme = async () => {
+      const res = await fetch('https://api.imgflip.com/get_memes');
+      const data = await res.json();
+      console.log(data.data.memes);
+    };
+    getMeme();
+  }, []);
+
   return (
     <>
       <div className='my-10'>
-        <form action='' className='flex flex-col w-10/12 mx-auto'>
+        <div action='' className='flex flex-col w-10/12 mx-auto'>
           <div className='flex gap-2 justify-center'>
             <input
               type='text'
@@ -21,7 +32,10 @@ const Meme = () => {
           <button className='w-full rounded-md my-5 py-3 px-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white'>
             Get a new meme image 🖼
           </button>
-        </form>
+          <div>
+            <img src={meme.randomImage} alt='meme image' />
+          </div>
+        </div>
       </div>
     </>
   );
