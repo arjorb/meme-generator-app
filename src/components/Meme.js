@@ -23,11 +23,12 @@ const Meme = () => {
   };
 
   const handleChange = e => {
-    const [name, value] = e.target;
+    const { name, value } = e.target;
     setMeme(prevMeme => ({
       ...prevMeme,
       [name]: value,
     }));
+    console.log(meme);
   };
 
   return (
@@ -48,7 +49,7 @@ const Meme = () => {
               placeholder='Bottom text'
               className='py-1 pl-1 text-lg outline-none rounded-md border-2 border-gray-200 w-full'
               name='buttomText'
-              value={meme.topText}
+              value={meme.buttomText}
               onChange={handleChange}
             />
           </div>
@@ -58,7 +59,16 @@ const Meme = () => {
           >
             Get a new meme image 🖼
           </button>
-          <div className=''>{meme.randomImage && <img src={meme.randomImage} alt='meme image' />}</div>
+
+          <div className='relative'>
+            {meme.randomImage && <img src={meme.randomImage} alt='meme image' className='relative' />}
+            <h1 className='absolute top-5 z-20 left-0 right-0 text-center font-bold text-5xl text-white'>
+              {meme.topText}
+            </h1>
+            <h1 className='absolute bottom-5 z-20 left-0 right-0 text-center font-bold text-5xl text-white'>
+              {meme.buttomText}
+            </h1>
+          </div>
         </div>
       </div>
     </>
