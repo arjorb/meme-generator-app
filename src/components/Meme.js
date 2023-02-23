@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Meme = () => {
-  const [meme, setMeme] = useState({ topText: '', buttomText: '', randomImage: 'http://i.imgflip.com/1bij.jpg' });
+  const [meme, setMeme] = useState({ topText: '', buttomText: '', randomImage: '' });
   const [allMemeImage, setAllMemeImage] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,10 @@ const Meme = () => {
   const handleGenerateImage = () => {
     const randomImage = Math.floor(Math.random() * allMemeImage.length);
     const url = allMemeImage[randomImage].url;
-    console.log(url);
+    setMeme(prevMeme => ({
+      ...prevMeme,
+      randomImage: url,
+    }));
   };
 
   return (
@@ -41,9 +44,7 @@ const Meme = () => {
           >
             Get a new meme image 🖼
           </button>
-          <div>
-            <img src={meme.randomImage} alt='meme image' />
-          </div>
+          <div className=''>{meme.randomImage && <img src={meme.randomImage} alt='meme image' />}</div>
         </div>
       </div>
     </>
