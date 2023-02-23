@@ -8,10 +8,16 @@ const Meme = () => {
     const getMeme = async () => {
       const res = await fetch('https://api.imgflip.com/get_memes');
       const data = await res.json();
-      console.log(data.data.memes);
+      setAllMemeImage(data.data.memes);
     };
     getMeme();
   }, []);
+
+  const handleGenerateImage = () => {
+    const randomImage = Math.floor(Math.random() * allMemeImage.length);
+    const url = allMemeImage[randomImage].url;
+    console.log(url);
+  };
 
   return (
     <>
@@ -29,7 +35,10 @@ const Meme = () => {
               className='py-1 pl-1 text-lg outline-none rounded-md border-2 border-gray-200 w-full'
             />
           </div>
-          <button className='w-full rounded-md my-5 py-3 px-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white'>
+          <button
+            onClick={handleGenerateImage}
+            className='w-full rounded-md my-5 py-3 px-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white'
+          >
             Get a new meme image 🖼
           </button>
           <div>
