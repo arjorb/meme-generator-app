@@ -1,10 +1,10 @@
 import Meme from './components/Meme';
-import Navbar from './components/Navbar';
+import Header from './components/Header';
 function App() {
   return (
     <div className='flex justify-center mt-10'>
-      <div className='w-[550px] min-h-[500px] bg-white shadow-xl'>
-        <Navbar />
+      <div className='w-137.5 bg-white shadow-xl'>
+        <Header />
         <Meme />
       </div>
     </div>

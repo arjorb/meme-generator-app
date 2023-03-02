@@ -34,7 +34,7 @@ const Meme = () => {
   return (
     <>
       <div className='my-10'>
-        <div action='' className='flex flex-col w-10/12 mx-auto'>
+        <div className='flex flex-col w-10/12 mx-auto'>
           <div className='flex gap-2 justify-center'>
             <input
               type='text'
@@ -61,7 +61,7 @@ const Meme = () => {
           </button>
 
           <div className='relative'>
-            {meme.randomImage && <img src={meme.randomImage} alt='meme name' className='relative' />}
+            {meme.randomImage && <img src={meme.randomImage} alt='meme name' className='relative'/>}
             <h1 className='absolute top-5 z-20 left-0 right-0 text-center font-bold text-5xl text-white'>
               {meme.topText}
             </h1>
