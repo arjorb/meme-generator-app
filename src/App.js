@@ -1,7 +1,12 @@
+import Meme from './components/Meme';
+import Header from './components/Header';
 function App() {
   return (
-    <div className=''>
-      <h1 className='text-3xl text-[#03948d] font-bold underline'>Seting up the environment</h1>
+    <div className='flex justify-center mt-10'>
+      <div className='w-137.5 bg-white shadow-xl'>
+        <Header />
+        <Meme />
+      </div>
     </div>
   );
 }
