@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Meme = () => {
   const [meme, setMeme] = useState({ topText: '', buttomText: '', randomImage: '' });
@@ -7,8 +7,8 @@ const Meme = () => {
   useEffect(() => {
     const getMeme = async () => {
       const res = await fetch('https://api.imgflip.com/get_memes');
-      const data = await res.json();
-      setAllMemeImage(data.data.memes);
+      const { data } = await res.json();
+      setAllMemeImage(data.memes);
     };
     getMeme();
   }, []);
@@ -28,7 +28,6 @@ const Meme = () => {
       ...prevMeme,
       [name]: value,
     }));
-    console.log(meme);
   };
 
   return (
@@ -61,12 +60,12 @@ const Meme = () => {
           </button>
 
           <div className='relative'>
-            {meme.randomImage && <img src={meme.randomImage} alt='meme name' className='relative'/>}
+            {meme.randomImage && <img src={meme.randomImage} alt='meme name' className='relative' />}
             <h1 className='absolute top-5 z-20 left-0 right-0 text-center font-bold text-5xl text-white'>
-              {meme.topText}
+              {meme.randomImage && meme.topText}
             </h1>
             <h1 className='absolute bottom-5 z-20 left-0 right-0 text-center font-bold text-5xl text-white'>
-              {meme.buttomText}
+              {meme.randomImage && meme.buttomText}
             </h1>
           </div>
         </div>
